@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Finance Tracker App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Finance Tracker App</h1>
+    <form method="POST">
+        <label for="symbol">Enter Stock Symbol:</label>
+        <input type="text" id="symbol" name="symbol" required>
+        <button type="submit">Submit</button>
+    </form>
+    {% if stock_data %}
+        <h2>Stock Data for {{ symbol }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
+                    <th>Volume</th>
+                    <th>Daily Return</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date, info in stock_data.items() %}
+                <tr>
+                    <td>{{ date }}</td>
+                    <td>{{ info['1. open'] }}</td>
+                    <td>{{ info['2. high'] }}</td>
+                    <td>{{ info['3. low'] }}</td>
+                    <td>{{ info['4. close'] }}</td>
+                    <td>{{ info['5. volume'] }}</td>
+                    <td>{{ info['daily_return']|default('N/A') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
