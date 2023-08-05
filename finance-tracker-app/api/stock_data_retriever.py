@@ -5,7 +5,7 @@ import json
 url = "https://www.alphavantage.co/query"
 
 # API key (replace 'YOUR_API_KEY' with your actual API key)
-api_key = "9Q7F8XR7UJCRZ1RN"
+api_key = #YOUR_API_KEY
 
 # Function to fetch stock data
 def fetch_stock_data(symbol):
